@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,6 +13,7 @@ import AdminAuth from "./pages/auth/Admin";
 import StudentDashboard from "./pages/dashboard/Student";
 import RecruiterDashboard from "./pages/dashboard/Recruiter";
 import AdminDashboard from "./pages/dashboard/Admin";
+import { Analytics } from "@vercel/analytics/react"; // ✅ Fixed import
 
 const queryClient = new QueryClient();
 
@@ -55,9 +55,9 @@ const App = () => (
                 </ProtectedRoute>
               } 
             />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <Analytics /> {/* ✅ Analytics placed at the end */}
         </BrowserRouter>
       </TooltipProvider>
     </AuthProvider>
